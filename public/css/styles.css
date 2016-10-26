@@ -1,0 +1,34 @@
+a 
+{ 
+	cursor: pointer; 
+}
+body
+{
+    background-color: #F5F5F5;
+}
+#body
+{
+    margin-top: 80px;
+}
+#logoutBTN
+{
+	width: 80px;
+	margin-top: 7px;
+}
+
+.bordersON
+{
+    border: 2px solid black;
+}
+.btnDIV
+{
+    margin-top: 10px;
+}
+.loginBtn
+{
+    width: 200px;
+}
+.titles
+{
+	opacity: 0.8;
+}
