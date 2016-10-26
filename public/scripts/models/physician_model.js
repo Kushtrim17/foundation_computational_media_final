@@ -39,6 +39,13 @@ Physician.getPhysicianData  = function(callback) {
 	});
 }
 
+Physician.getVisualisationData = function(data, callback) {
+    $.ajax({ type: "POST", url: config.userURL, data: { type: Physician.reqType, command: "getVisualisationData", data:data}})
+     .done(function(response) {
+        callback($.parseJSON(response));
+    });
+}
+
 Physician.storeAnnotation = function(id, data, callback) {
     $.ajax({ type: "POST", url: config.userURL, data: { type: Physician.reqType, command: "storeAnotation", annotation:data, test_id:id}})
      .done(function(response) {

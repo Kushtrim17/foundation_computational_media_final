@@ -170,6 +170,42 @@ function displayAllSessions() {
     $('#data_div').html(html);;
 }
 
+function visualizeTest(dataToVisualize) {
+	//empty out the html then make the api call to get the data
+	//then use the google api to present the data
+	Physician.getVisualisationData(dataToVisualize, function(data) {
+		//the data has the int values in string so we convert them in int
+		for (var i = 0; i < data.length; i ++) {
+			for (var j = 0; j < data[i].length; j++) {
+				if ($.isNumeric(data[i][j])) {
+					data[i][j] = parseFloat(data[i][j]);
+				}
+			}
+		}
+		googleVisualisation(data);
+	});
+}
+
+function googleVisualisation(myData) {
+	// Load the Visualization API and the corechart package.
+	google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable(myData);
+
+        var options = {
+          title: 'Data visualiztion',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.ScatterChart(document.getElementById('data_div'));
+
+        chart.draw(data, options);
+      }
+}
+
 function setClickedTest(test_id) {
 	$('#myModal').modal('toggle');
 	//we need to know which test was selected that we want to set annotations
