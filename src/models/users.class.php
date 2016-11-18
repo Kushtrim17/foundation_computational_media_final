@@ -59,11 +59,6 @@
 		{
 			$users_array = array();
 			$obj = new SimpleXMLElement($this->XML);
-			/*echo debug_backtrace()[1]['function'];
-			echo '<pre>';
-			print_r($obj);
-			echo '</pre>';*/
-			error_log(json_encode($obj));
 			foreach ($obj->userID as $user) {
 				//we add only the users
 				if ((string)$user['id'] == '3' || (string)$user['id'] == '4') {
@@ -72,16 +67,9 @@
 					$user_array['email'] = (string)$user->email;
 					$user_array['lat'] = (string)$user->Lat;
 					$user_array['long'] = (string)$user->Long;
-					//get role name from role id
-					//$role = new Role();
+
 					$user_array['Role_IDrole'] = 'patient';
 					$user_array['Organization'] = 'organization';
-					/*$role_name = $role->getRoleNameWithId((string)$user->Role_IDrole);
-					$user_array['Role_IDrole'] = $role_name;
-					//get organization name from organization id
-					$org = new Organization();
-					$org_name = $org->getOraganizationNameWithId((string)$user->Organization);
-					$user_array['Organization'] = $org_name; */
 
 					array_push($users_array, $user_array);
 				}

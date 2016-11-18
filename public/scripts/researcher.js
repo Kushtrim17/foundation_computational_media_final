@@ -206,10 +206,6 @@ function storeAnotation()
 {
 	var text = $('#annotation_text').val();
 	Researcher.storeAnnotation(SELECTED_TEST, text, function(response) {
-		//console.log('at last this is the response ::: '+response + ' and here is selected_test ::' +SELECTED_TEST);
-		console.log('response');
-		console.log(response);
-		console.log('response');
 		Researcher.setTests(response.tests);
 		displayAllSessions();
 	});
@@ -237,14 +233,7 @@ function googleVisualisation(myData) {
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-       /* var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
-        ]);*/
-        //console.log(myData);
+
         var data = google.visualization.arrayToDataTable(myData);
 
         var options = {
@@ -265,7 +254,6 @@ function displayAllResearch()
 
      var html = "<center><h2 class='titles'>" + research.title + "</h2></center>";
      $.each(research.items, function(key, item) {
-        console.log(item);
         html +=
             "<div class='col-md-12 col-sm-12'>" +
                 "<h3 class='titles'>" + item.title + "</h3>" +
@@ -290,9 +278,8 @@ function logout() {
 */
 function showMap() {
 	var patients = Researcher.getPatients();
-	//console.log(Researcher.getPatients());
 	$('#data_div').html("");
-	//var uluru = {lat: 56.8833333, lng: 14.8166667};
+
 	var map;
 	map = new google.maps.Map(document.getElementById('mymap'), {
       center: {lat: 56.8833333, lng: 14.8166667},

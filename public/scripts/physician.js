@@ -216,10 +216,6 @@ function storeAnotation()
 {
 	var text = $('#annotation_text').val();
 	Physician.storeAnnotation(SELECTED_TEST, text, function(response) {
-		//console.log('at last this is the response ::: '+response + ' and here is selected_test ::' +SELECTED_TEST);
-		console.log('response');
-		console.log(response);
-		console.log('response');
 		Physician.setTests(response.tests);
 		displayAllSessions();
 	});

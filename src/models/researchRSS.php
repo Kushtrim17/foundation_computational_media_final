@@ -29,7 +29,6 @@
         public function getResearchFeed()
 		{
 			$url = self::RSS_URL;
-            //error_log(json_encode($url));
 			$this->XML = file_get_contents($url);
 			return $this->convertXMLDataToArray();
 		}

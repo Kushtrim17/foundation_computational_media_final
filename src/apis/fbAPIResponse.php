@@ -64,9 +64,6 @@
       exit;
     }
 
-    // Logged in
-    //var_dump($accessToken->getValue());
-
     $_SESSION['fb']['accessToken'] = $accessToken->getValue();
 
     // The OAuth 2.0 client handler helps us manage access tokens
@@ -79,7 +76,6 @@
 
     $tokenMetadata->validateAppId(APP_ID);
     // If you know the user ID this access token belongs to, you can validate it here
-    //$tokenMetadata->validateUserId('123');
     $tokenMetadata->validateExpiration();
 
     if (! $accessToken->isLongLived()) {
@@ -90,13 +86,6 @@
         echo "<p>Error getting long-lived access token: " . $helper->getMessage() . "</p>\n\n";
         exit;
       }
-
-      echo '<h3>Long-lived</h3>';
-      var_dump($accessToken->getValue());
-      //$_SESSION['fb']['accessToken'] = $accessToken->getValue();
-    }
-    else {
-      //echo '<h1> THiS IS THE ACCESS TOKEN  CAST TO STRING:: '.(string)$accessToken.'</h1>';
     }
 
     if (isset($accessToken)) {
@@ -106,8 +95,5 @@
     else {
       header('Location: http://146.185.134.19/final/public/');
     }
-
-    //header('Location: kushtrim.comyr.com/public/user/patient.html');
-
-
+    
 ?>

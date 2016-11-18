@@ -40,9 +40,7 @@
 
 		private function convertXMLDataToArray()
 		{
-			//$users_array = array();
 			$obj = new SimpleXMLElement($this->XML);
-			//error_log(json_encode($obj->OrganizationID->name));
 
 			return (string) $obj->OrganizationID->name;
 		}

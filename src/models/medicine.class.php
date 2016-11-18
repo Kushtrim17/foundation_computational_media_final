@@ -32,7 +32,6 @@
 		public function getMedicineNameWithID($medicineID)
 		{
 			$url = self::DB_URL . self::TBL_MEDICINE . self::MEDICINE_ID . $medicineID;
-            //error_log(json_encode($url));
 			$this->XML = file_get_contents($url);
 			return $this->convertXMLDataToArray();
 		}
@@ -40,9 +39,7 @@
 
 		private function convertXMLDataToArray()
 		{
-			//$users_array = array();
 			$obj = new SimpleXMLElement($this->XML);
-			//((error_log(json_encode($obj->medicineID->name));
 
 			return (string) $obj->medicineID->name;
 		}

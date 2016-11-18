@@ -44,12 +44,9 @@
         private function convertXMLDataToArray($sessionID)
         {
 			$obj = new SimpleXMLElement($this->XML);
-			//error_log(json_encode($obj));
 			foreach ($obj->noteID as $note) {
                 $test_session_id = intval((string)$note->Test_Session_IDtest_session);
                 if ($test_session_id == intval($sessionID)) {
-                    //echo '<pre> this is the note::'.$note->note;
-                    //error_log("NOTEEEEEEE::".$note->note);
                     return (string)$note->note;
                 }
             }
